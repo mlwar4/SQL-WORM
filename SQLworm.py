@@ -1,3 +1,4 @@
+```python
 import requests
 import re
 import random
@@ -152,8 +153,11 @@ class SuperDuperSQLTool:
  \____|_____| |_|   |_____|     |_____| |_|  ~ mlwar4
 """)
         self.verbose = input("Enable verbose mode? (y/n): ").lower() == 'y'
+        worm_mode = input("Do you want to run in WORM mode? (y/n): ").lower() == 'y'
+        if worm_mode:
+            target_url = input("Enter the website URL to test SQL injection on: ")
+            self.targets.append(target_url)
 
-        self.load_targets_from_file("targets.txt")
         self.load_payloads_from_file("payloads.txt")
 
         self.tfidf = TfidfVectorizer(ngram_range=(1, 2), max_features=10000)
@@ -170,4 +174,7 @@ class SuperDuperSQLTool:
 
 if __name__ == "__main__":
     tool = SuperDuperSQLTool()
+
+
     tool.main()
+```
